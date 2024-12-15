@@ -477,7 +477,7 @@ To perform hypothesis testing, we utilize sample splitting and cross-fitting pro
         </tr>
         <tr>
             <td class="speaker">
-             Private distributed functional data analysis
+             Optimal estimation in private distributed functional data analysis
             </td>
         </tr>
             <td class="date" rowspan="2">
@@ -485,10 +485,11 @@ To perform hypothesis testing, we utilize sample splitting and cross-fitting pro
             </td>
         <tr>
             <td class="abstract">
-              Abstract: In this talk, we study private distributed functional data analysis problems, for both mean estimation and varying coefficient model estimation.  We show the interplay of federated, central and user-level differential privacy notions.  Our results show a number of interesting phase transition phenomena, from sparse to dense and from non-private to various private notions.
-            </td>
-        </tr>
-    </table>
+              Abstract: We systematically investigate the preservation of differential privacy in functional data analysis, beginning with functional mean estimation and extending to varying coefficient model estimation. Our work introduces a distributed learning framework involving multiple servers, each responsible for collecting several sparsely observed functions. This hierarchical setup introduces a mixed notion of privacy. Within each function, user-level differential privacy is applied to m discrete observations. At the server level, central differential privacy is deployed to account for the centralised nature of data collection. Across servers, only private information is exchanged, adhering to federated differential privacy constraints. To address this complex hierarchy, we employ minimax theory to reveal several fundamental phenomena: from sparse to dense functional data analysis, from user-level to central and federated differential privacy costs, and the intricate interplay between different regimes of functional data analysis and privacy preservation.
+To the best of our knowledge, this is the first study to rigorously examine functional data estimation under multiple privacy constraints. Our theoretical findings are complemented by efficient private algorithms and extensive numerical evidence, providing a comprehensive exploration of this challenging problem.
+</td>
+</tr>
+</table>
 
     <table>
         <tr>
