@@ -3,6 +3,7 @@ from datetime import datetime
 
 csv_file = "schedule.csv"
 location_csv = "locations.csv"
+session_csv = "sessions.csv"
 
 output_file = "../schedule/index.html"  # Output HTML file
 
@@ -78,17 +79,29 @@ html_content = """
 
 """
 
+def generate_schedule_html(csv_file, location_csv, session_csv, output_file):
+    """
+    Generate an HTML schedule, including speakers for Invited Sessions.
 
-import pandas as pd
-from datetime import datetime
+    Parameters:
+        csv_file (str): Path to the schedule CSV file.
+        location_csv (str): Path to the location CSV file.
+        session_csv (str): Path to the session details CSV file with speakers.
+        output_file (str): Output HTML file path.
 
-def generate_schedule_html(csv_file, location_csv, output_file):
+    Returns:
+        str: HTML content for the schedule.
+    """
     # Read the CSV files
     df = pd.read_csv(csv_file)
     location_df = pd.read_csv(location_csv)
+    session_df = pd.read_csv(session_csv, sep=',')
 
     # Create a dictionary for location links
     location_links = dict(zip(location_df['Location'], location_df['Location link']))
+    
+    # Create a dictionary for session speakers
+    session_speakers = dict(zip(session_df['Session title'], session_df['Speakers']))
 
     # Initialize HTML content
     html_content = """
@@ -128,7 +141,6 @@ def generate_schedule_html(csv_file, location_csv, output_file):
 
         # Validate time continuity
         if start_time and previous_end_time:
-            # Convert time strings to datetime for comparison
             time_format = "%I:%M%p"
             start_dt = datetime.strptime(start_time, time_format)
             prev_end_dt = datetime.strptime(previous_end_time, time_format)
@@ -146,10 +158,17 @@ def generate_schedule_html(csv_file, location_csv, output_file):
         else:
             event_html = f"{event}"
 
+        # Add speakers for "Invited Session X"
+        speakers_html = ""
+        if "Invited Session" in event:
+            speakers = session_speakers.get(event, "")
+            if speakers:
+                speakers_html = f"<span style='font-size: normal;'><b>Speakers:</b> {speakers}</span><br>"
+
         # Format location details
         link = location_links.get(location, "")
         if location and link:
-            location_html = f"<a title=\"{location}\" href=\"{link}\">{location}</a>"
+            location_html = f"<b>Location:</b> <a title=\"{location}\" href=\"{link}\">{location}</a>"
         elif location:
             location_html = f"{location}"
         else:
@@ -173,47 +192,29 @@ def generate_schedule_html(csv_file, location_csv, output_file):
             formatted_time_range = ""
 
         # Add event HTML
-        if isinstance(event, str) and ("Break" in event or "Lunch" in event or "Banquet Dinner" in event or "Coffee Break" in event):
-            html_content += f"""
-            <table>
-                <tr>
-                    <td class=\"date\" rowspan=\"2\">
-                        {formatted_time_range}
-                    </td>
-                    <td class=\"title-special\">
-                        {event_html if event_html else event}
-                    </td>
-                </tr>
-                <tr>
-                    <td class=\"abstract\">
-                        {location_html}
-                    </td>
-                </tr>
-            </table>
-            """
-        elif event:  # Only add the table if there's an event
-            html_content += f"""
-            <table>
-                <tr>
-                    <td class=\"date\" rowspan=\"3\">
-                        {formatted_time_range}
-                    </td>
-                    <td class=\"title\">
-                        {event_html if event_html else event}
-                    </td>
-                </tr>
-                <tr>
-                    <td class=\"abstract\">
-                        {location_html}
-                    </td>
-                </tr>
-            </table>
-            """
+        html_content += f"""
+        <table>
+            <tr>
+                <td class=\"date\" rowspan=\"3\">
+                    {formatted_time_range}
+                </td>
+                <td class=\"title\">
+                    {event_html if event_html else event}
+                </td>
+            </tr>
+            <tr>
+                <td class=\"abstract\">
+                    {speakers_html}
+                    {location_html}
+                </td>
+            </tr>
+        </table>
+        """
 
     return html_content
 
 
-html_content += generate_schedule_html(csv_file, location_csv, output_file)
+html_content += generate_schedule_html(csv_file, location_csv, session_csv, output_file)
 
 
 html_content += """
