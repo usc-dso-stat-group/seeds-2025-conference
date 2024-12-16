@@ -108,22 +108,33 @@ html_content = """
       <b>Wi-Fi:</b> Two visitor Wi-Fi networks are available: USC Guest Wireless (no authentication required) and Eduroam (requires authentication).
     </p>
 
-    <h2>Program at a glance</h2>
-    <p>
-      This conference features:
-      <ul>
-        <li> Three Keynote Presentations;  </li>
-        <li> Invited (academic) sessions focusing on a diverse range of cutting-edge statistics and data science topics;  </li>
-        <li> Short courses by invited academia and industry participants;  </li>
-        <li> One contributed poster session, open to all registered participants; </li>
-        <li> Poster awards for students.</li>
-      </ul> 
-    </p>
+<h2>Program at a Glance</h2>
+<p>
+  The conference will feature:
+</p>
+<ul>
+  <li>Three keynote presentations</li>
+  <li>Invited academic sessions covering a wide range of cutting-edge topics in statistics and data science</li>
+  <li>Three short courses led by experts from academia and industry</li>
+  <li>A contributed poster session, open to all registered participants</li>
+  <li>Poster awards for students</li>
+</ul>
 
-    <h2>Information about poster session</h2>
 
-    We invite submissions to a Contributed Poster Session at SEEDS 2025. Student poster presenters will also be considered for poster awards.
-    If you would like to present a poster, please submit your poster title and abstract <a href="https://forms.gle/f7UQpsGwUGG687eR8"> here.</a> and <a href="mailto:seeds.conference@marshall.usc.edu">email the SEEDS organizers</a> no later than December 31, 2024.
+    <h2>Poster Session</h2>
+
+<p>
+  We welcome submissions for the Contributed Poster Session at SEEDS 2025. Student presenters will also be eligible for poster awards.
+</p>
+<p>
+  To participate, please submit your poster title and abstract via 
+  <a href="https://forms.gle/f7UQpsGwUGG687eR8" target="_blank">this form</a> 
+  and notify the SEEDS organizers by email at 
+  <a href="mailto:seeds.conference@marshall.usc.edu">seeds.conference@marshall.usc.edu</a> 
+  no later than December 31, 2024.
+</p>
+
+
 """
 
 
