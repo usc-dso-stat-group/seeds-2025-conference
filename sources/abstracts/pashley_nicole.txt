@@ -1,0 +1,3 @@
+Instrumental Variable Methods for Factorial Experiments with Complex Treatment Uptake 
+
+There is a well-established literature dealing with noncompliance in treatment-control designs within the potential-outcome framework for causal inference. However, generalizing to experiments with more than two treatment arms and noncompliance remains a challenge with limited exploration. The focus of this talk will be noncompliance in two-level factorial designs. The talk will discuss why this setting is so challenging, propose different assumptions to learn about relevant estimands, and explore identification and inference results under these assumptions.

@@ -1,0 +1,3 @@
+Application and Methods for Structured Tensor Learning 
+
+High-order tensor datasets pose common challenges in applications such as recommendation systems, neuroimaging, and social networks. In this work, we introduce two approaches for learning with structured tensors: tensor block models for higher-order clustering and sign-series models for tensor denoising. These approaches provide a lens into the unique properties of tensor analysis. We establish statistical and computational efficiency results for each method. Additionally, we present polynomial-time algorithms with guaranteed efficiency. The effectiveness of our methods is demonstrated through applications to neuroimaging data analysis and social network analysis.
