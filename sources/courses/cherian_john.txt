@@ -1,4 +1,4 @@
-Short Course 1 (Wednesday, January 8th, 9am-12pm) 
+Short Course - Conformal Inference (Wednesday, January 8th, 9am-12pm) 
 
 Making sense of the black box: what can conformal inference offer the theory and practice of data science?
 

@@ -20,7 +20,7 @@ html_content = """
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
-    <title>Sessions | SEEDS Conference</title>
+    <title>Short Courses | SEEDS Conference</title>
 </head>
 
 <body>
@@ -105,32 +105,37 @@ def write_list_of_courses(df, title):
         website = row["Website"]
         abstract_file = row["Abstract"]
 
+        # Generate a unique link based on the speaker's name (lastname_firstname)
+        lastname, firstname = speaker_name.split(" ", 1)
+        speaker_link_id = f"{lastname.lower()}_{firstname.lower()}"
+
         # Extract course time, title, bio, and abstract
         course_time, talk_title, short_bio, abstract = extract_course_time_title_bio_and_abstract("courses/" + abstract_file)
 
-        # Append speaker information to HTML content
+        # Append speaker information to HTML content with an anchor link
         html_content += f"""
+        <a id="{speaker_link_id}"></a>
         <table>
             <tr>
-                <td class="title" colspan="2">
-                    <div style="text-align: center; margin-top: 5px; font-size: smaller; color: gray;">
+                <td class=\"title\" colspan=\"2\">
+                    <div style=\"text-align: center; margin-top: 5px; font-size: smaller; color: gray;\">
                         {course_time if course_time != 'TBA' else 'TBA'}
                     </div> <br>
-                    <a href="{website}">
+                    <a href=\"{website}\">
                         <strong>{speaker_name}</strong> ({affiliation})
                     </a>
-                    <div style="text-align: center; margin-top: 10px; font-size: smaller;">
+                    <div style=\"text-align: center; margin-top: 10px; font-size: smaller;\">
                         {talk_title if talk_title != 'TBA' else 'TBA'}
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="speaker" colspan="2">
+                <td class=\"speaker\" colspan=\"2\">
                     <strong>Bio:</strong> {short_bio if short_bio != 'TBA' else 'TBA'}
                 </td>
             </tr>
             <tr>
-                <td class="abstract" colspan="2">
+                <td class=\"abstract\" colspan=\"2\">
                     <strong>Abstract:</strong> {abstract if abstract != 'TBA' else 'TBA'}
                 </td>
             </tr>

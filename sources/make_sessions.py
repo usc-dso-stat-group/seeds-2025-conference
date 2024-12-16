@@ -106,11 +106,16 @@ def write_list_of_talks(df, title):
         website = row["Website"]
         abstract_file = row["Abstract"]
 
+        # Generate a unique link based on the speaker's name (lastname_firstname)
+        firstname,lastname = speaker_name.split(" ", 1)
+        speaker_link_id = f"{firstname.lower()}_{lastname.lower()}"
+
         # Extract title and abstract
         title, abstract = extract_title_and_abstract("abstracts/"+abstract_file)
 
         # Append speaker information to HTML content
         html_content += f"""
+        <a id="{speaker_link_id}"></a>
         <table>
             <tr>
                 <td class="date" rowspan="2">

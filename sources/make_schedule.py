@@ -18,7 +18,7 @@ html_content = """
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
-    <title>Sessions | SEEDS Conference</title>
+    <title>Schedule | SEEDS Conference</title>
 </head>
 
 <body>
@@ -100,6 +100,7 @@ def generate_schedule_html(csv_file, location_csv, output_file):
         start_time = row['When (start)']
         end_time = row['When (end)']
         event = row['What'] if pd.notna(row['What']) else ""  # Handle NaN
+        event_link = row['Link'] if pd.notna(row['Link']) else ""  # Handle NaN
         location = row['Location'] if not pd.isna(row['Location']) else ""
         location_details = row['Location details'] if not pd.isna(row['Location details']) else ""
 
@@ -107,6 +108,12 @@ def generate_schedule_html(csv_file, location_csv, output_file):
         if day and day != current_day:
             html_content += f"<h4>{day}</h4>\n"
             current_day = day
+
+        # Add link to event if provided
+        if event_link:
+            event_html = f"<a title=\"{event}\" href=\"{event_link}\">{event}</a>"
+        else:
+            event_html = f"{event}"
         
         # Cross-reference location links, exclude link if location not found
         link = location_links.get(location, "")
@@ -136,7 +143,7 @@ def generate_schedule_html(csv_file, location_csv, output_file):
                         {formatted_time_range}
                     </td>
                     <td class=\"title-special\">
-                        {event}
+                        {event_html}
                     </td>
                 </tr>
                 <tr>
@@ -154,7 +161,7 @@ def generate_schedule_html(csv_file, location_csv, output_file):
                         {formatted_time_range}
                     </td>
                     <td class=\"title\">
-                        {event}
+                        {event_html}
                     </td>
                 </tr>
                 <tr>

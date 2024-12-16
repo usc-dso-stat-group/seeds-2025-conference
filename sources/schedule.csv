@@ -1,14 +1,14 @@
 Day,When (start),When (end),What,Link,Location,Location details
 "Wednesday, January 8th",8:30am,9:00am,Registration and Breakfast! ,,Fertitta Hall (JFF),ground floor lobby 
-,9:00am,12:00pm,Short Course 1 (LLMs),,Fertitta Hall (JFF),Room 105
+,9:00am,12:00pm,Short Course (LLMs),courses/index.html#wes_gruver,Fertitta Hall (JFF),Room 105
 ,12:00pm,1:30pm,Lunch,,Fertitta Hall (JFF),ground floor lobby 
-,1:30pm,4:30pm,Short Course 2 (Conformal Inference),,Fertitta Hall (JFF),Room 105
+,1:30pm,4:30pm,Short Course (Conformal Inference),courses/index.html#john_cherian,Fertitta Hall (JFF),Room 105
 ,,,,,,
 "Thursday, January 9th",7:00am,8:00am,Registration and Breakfast! ,,Fertitta Hall (JFF),ground floor lobby 
 ,8:00am,8:10am,Opening remarks,,Fertitta Hall (JFF),Room 105
-,8:10am,9:20am,Keynote lecture 1,,Fertitta Hall (JFF),Room 105
-,9:20am,10:30am,Keynote lecture 2,,Fertitta Hall (JFF),Room 105
-,10:30am,11:40am,Keynote lecture 3,,Fertitta Hall (JFF),Room 105
+,8:10am,9:20am,Keynote lecture 1 – Jianqing Fan,sessions/index.html#jianqing_fan,Fertitta Hall (JFF),Room 105
+,9:20am,10:30am,Keynote lecture 2 – Xihong Lin,sessions/index.html#xihong_lin,Fertitta Hall (JFF),Room 105
+,10:30am,11:40am,Keynote lecture 3 – Richard Samworth,sessions/index.html#richard_samworth,Fertitta Hall (JFF),Room 105
 ,11:40am,1:00pm,Lunch,,Fertitta Hall (JFF),ground floor lobby 
 ,1:00pm,2:25pm,Invited Talks (3),,Fertitta Hall (JFF),Room 105
 ,2:25pm,2:50pm,Coffee Break,,Fertitta Hall (JFF),ground floor lobby 
@@ -25,7 +25,7 @@ Day,When (start),When (end),What,Link,Location,Location details
 ,3:20pm,3:45pm,Coffee Break,,Fertitta Hall (JFF),ground floor lobby 
 ,3:45pm,5:35pm,Invited Talks (4),,Fertitta Hall (JFF),Room 105
 ,5:35pm,6:35pm,Poster session,,Fertitta Hall (JFF),ground floor lobby 
-,6:35pm,8:35pm,Banquet dinner,,University Club of USC,
+,6:35pm,8:35pm,Banquet Dinner,,University Club of USC,
 ,,,,,,
 "Saturday, January 11th",7:00am,8:00am,Breakfast,,Fertitta Hall (JFF),ground floor lobby 
 ,8:00am,9:50am,Invited Talks (4),,Fertitta Hall (JFF),Room 105
@@ -33,4 +33,4 @@ Day,When (start),When (end),What,Link,Location,Location details
 ,10:15am,12:05pm,Invited Talks (4),,Fertitta Hall (JFF),Room 105
 ,12:05pm,12:15pm,Closing remarks,,Fertitta Hall (JFF),Room 105
 ,12:15pm,1:30pm,Lunch,,Fertitta Hall (JFF),ground floor lobby 
-,1:30pm,4:30pm,Short Course 3 (GenAI),,Fertitta Hall (JFF),Room 105
+,1:30pm,4:30pm,Short Course (GenAI),courses/index.html#haoda_fu,Fertitta Hall (JFF),Room 105
