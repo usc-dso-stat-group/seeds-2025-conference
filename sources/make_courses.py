@@ -77,11 +77,6 @@ html_content = """
 
     <br>
 
-    <a name=“keynote_presentations”>
-    <h3>Keynote Presentations</h4>
-    </a>
-
-
 """
 
 # Function to extract course time, title, short bio, and abstract from the file
