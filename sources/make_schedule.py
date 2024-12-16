@@ -1,7 +1,9 @@
 import pandas as pd
 
-csv_file = "schedule.csv"  # Replace with the path to your CSV file
-output_file = "../schedule/schedule.html"  # Output HTML file
+csv_file = "schedule.csv"
+location_csv = "locations.csv"
+
+output_file = "../schedule/index.html"  # Output HTML file
 
 # Start building the HTML content
 html_content = """
@@ -75,11 +77,14 @@ html_content = """
 
 """
 
-import pandas as pd
 
-def generate_schedule_html(csv_file, output_file):
-    # Read the CSV file
+def generate_schedule_html(csv_file, location_csv, output_file):
+    # Read the CSV files
     df = pd.read_csv(csv_file)
+    location_df = pd.read_csv(location_csv)
+
+    # Create a dictionary for location links
+    location_links = dict(zip(location_df['Location'], location_df['Location link']))
 
     # Initialize HTML content
     html_content = """
@@ -95,7 +100,6 @@ def generate_schedule_html(csv_file, output_file):
         start_time = row['When (start)']
         end_time = row['When (end)']
         event = row['What'] if pd.notna(row['What']) else ""  # Handle NaN
-        link = row['Link'] if not pd.isna(row['Link']) else ""
         location = row['Location'] if not pd.isna(row['Location']) else ""
         location_details = row['Location details'] if not pd.isna(row['Location details']) else ""
 
@@ -104,23 +108,32 @@ def generate_schedule_html(csv_file, output_file):
             html_content += f"<h4>{day}</h4>\n"
             current_day = day
         
-        # Generate location details with link if available
-        if location:
+        # Cross-reference location links, exclude link if location not found
+        link = location_links.get(location, "")
+
+        # Generate location details with or without link
+        if location and link:
             location_html = f"<a title=\"{location}\" href=\"{link}\">{location}</a>"
+        elif location:
+            location_html = f"{location}"
         else:
             location_html = ""
 
         # If location details are provided
         location_text = f", {location_details}" if location_details else ""
         location_html += location_text
+
+        # Format start_time and end_time for consistent width
+        time_range = f"{start_time} - {end_time}"
+        formatted_time_range = f"<div style=\"width: 140px; text-align: center;\">{time_range}</div>"
         
-        # Ensure event is a string before checking for "Break" or "Lunch"
-        if isinstance(event, str) and ("Break" in event or "Lunch" in event or "Banquet dinner" in event or "Coffee Break" in event):
+        # Ensure event is a string before checking for special events
+        if isinstance(event, str) and ("Break" in event or "Lunch" in event or "Banquet Dinner" in event or "Coffee Break" in event):
             html_content += f"""
             <table>
                 <tr>
                     <td class=\"date\" rowspan=\"2\">
-                        {start_time} - {end_time}
+                        {formatted_time_range}
                     </td>
                     <td class=\"title-special\">
                         {event}
@@ -138,7 +151,7 @@ def generate_schedule_html(csv_file, output_file):
             <table>
                 <tr>
                     <td class=\"date\" rowspan=\"3\">
-                        {start_time} - {end_time}
+                        {formatted_time_range}
                     </td>
                     <td class=\"title\">
                         {event}
@@ -154,8 +167,7 @@ def generate_schedule_html(csv_file, output_file):
 
     return html_content
 
-
-html_content += generate_schedule_html(csv_file, output_file)
+html_content += generate_schedule_html(csv_file, location_csv, output_file)
 
 
 html_content += """
