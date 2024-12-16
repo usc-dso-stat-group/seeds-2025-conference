@@ -79,11 +79,6 @@ html_content = """
 
     <br>
 
-    <a name=“keynote_presentations”>
-    <h3>Keynote Presentations</h4>
-    </a>
-
-
 """
 
 # Function to extract title and abstract from the file
