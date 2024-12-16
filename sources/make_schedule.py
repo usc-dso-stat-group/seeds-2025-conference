@@ -100,7 +100,28 @@ def generate_schedule_html(csv_file, location_csv, session_csv, output_file):
     # Create a dictionary for location links
     location_links = dict(zip(location_df['Location'], location_df['Location link']))
     
-    # Create a dictionary for session speakers
+    # Function to format speaker links
+    def format_speaker_links(speakers_str):
+        """
+        Convert a list of speakers separated by ';' into HTML hyperlinks.
+        Joins first and middle names with underscores and appends the last name.
+        """
+        speakers = speakers_str.split(";")
+        speaker_links = []
+        for speaker in speakers:
+            speaker = speaker.strip()
+            if speaker:
+                name_parts = speaker.split()
+                last_middle = " ".join(name_parts[1:])  # Join all but the first part with spaces
+                first = name_parts[0]  # First part
+                link = f"sessions/index.html#{first.lower()}_{last_middle.lower()}"  # Combine for the link
+                speaker_links.append(f'<a href="{link}">{speaker}</a>')
+        return ", ".join(speaker_links)
+
+    # Update session_df to include formatted speaker links
+    session_df['Speakers'] = session_df['Speakers'].apply(lambda x: format_speaker_links(x) if pd.notna(x) else "")
+
+    # Create a dictionary for session speakers with hyperlinks
     session_speakers = dict(zip(session_df['Session title'], session_df['Speakers']))
 
     # Initialize HTML content
