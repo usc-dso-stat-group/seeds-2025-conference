@@ -1,30 +1,30 @@
 Day,When (start),When (end),Duration,Track,What,Speakers,Link,Location,Location details
 "Wednesday, January 8th",8:30am,9:00am,00:30:00,Short Courses,Registration and Breakfast!,,,Fertitta Hall (JFF),ground floor lobby 
-,9:00am,12:00pm,03:00:00,Short Courses,Short Course (LLMs),,courses/index.html#wes_gruver,Fertitta Hall (JFF),Room 105
+,9:00am,12:00pm,03:00:00,Short Courses,Short Course (GenAI 1),,courses/index.html#wes_gruver,Fertitta Hall (JFF),Room 105
 ,12:00pm,1:30pm,01:30:00,Short Courses,Lunch,,,Fertitta Hall (JFF),ground floor lobby 
 ,1:30pm,4:30pm,03:00:00,Short Courses,Short Course (Conformal Inference),,courses/index.html#john_cherian,Fertitta Hall (JFF),Room 105
 ,,,,,,,,,
 "Thursday, January 9th",7:45am,8:30am,00:45:00,Main Track,Registration and Breakfast!,,,Fertitta Hall (JFF),ground floor lobby 
 ,8:30am,8:40am,00:10:00,Main Track,Opening remarks,,,Fertitta Hall (JFF),Room 105
-,8:40am,10:00am,01:20:00,Main Track,Invited Session 1 (3 talks),,,Fertitta Hall (JFF),Room 105
-,10:00am,10:30am,00:30:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
-,10:30am,11:30am,01:00:00,Main Track,Keynote lecture – Xihong Lin,,sessions/index.html#xihong_lin,Fertitta Hall (JFF),Room 105
-,11:30am,1:00pm,01:30:00,Main Track,Lunch,,,Fertitta Hall (JFF),ground floor lobby 
-,1:00pm,2:20pm,01:20:00,Main Track,Invited Session 2 (3 talks),,,Fertitta Hall (JFF),Room 105
-,2:20pm,2:40pm,00:20:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
-,2:40pm,4:30pm,01:50:00,Main Track,Invited Session 3 (4 talks),,,Fertitta Hall (JFF),Room 105
-,4:30pm,5:00pm,00:30:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
+,8:40am,9:40am,01:00:00,Main Track,Keynote lecture – Xihong Lin,,sessions/index.html#xihong_lin,Fertitta Hall (JFF),Room 105
+,9:40am,10:30am,00:50:00,Main Track,Invited Session 1 (2 talks),,,Fertitta Hall (JFF),Room 105
+,10:30am,11:00am,00:30:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
+,11:00am,12:00pm,01:00:00,Main Track,Keynote lecture – Richard Samworth,,sessions/index.html#richard_samworth,Fertitta Hall (JFF),Room 105
+,12:00pm,1:30pm,01:30:00,Main Track,Lunch,,,Fertitta Hall (JFF),ground floor lobby 
+,1:30pm,3:20pm,01:50:00,Main Track,Invited Session 2 (4 talks),,,Fertitta Hall (JFF),Room 105
+,3:20pm,3:40pm,00:30:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
+,3:40pm,5:00pm,01:20:00,Main Track,Invited Session 3 (3 talks),,,Fertitta Hall (JFF),Room 105
 ,5:00pm,6:00pm,01:00:00,Main Track,Keynote lecture – Jianqing Fan,,sessions/index.html#jianqing_fan,Fertitta Hall (JFF),Room 105
 ,,,,,,,,,
 "Friday, January 10th",7:45am,8:30am,00:45:00,Main Track,Breakfast,,,Fertitta Hall (JFF),ground floor lobby 
 ,8:30am,10:20am,01:50:00,Main Track,Invited Session 4 (3 talks),,,Fertitta Hall (JFF),Room 105
 ,10:20am,10:40am,00:20:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
-,10:40am,11:40am,01:00:00,Main Track,Keynote lecture – Richard Samworth,,sessions/index.html#richard_samworth,Fertitta Hall (JFF),Room 105
+,10:40am,11:40am,01:00:00,Main Track,,,,Fertitta Hall (JFF),Room 105
 ,11:40am,1:00pm,01:20:00,Main Track,Lunch,,,Fertitta Hall (JFF),ground floor lobby 
 ,1:00pm,2:20pm,01:20:00,Main Track,Invited Session 5 (3 talks),,,Fertitta Hall (JFF),Room 105
 ,2:20pm,2:50pm,00:30:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
 ,2:50pm,4:10pm,01:20:00,Main Track,Invited Session 6 (3 talks),,,Fertitta Hall (JFF),Room 105
-,1:00pm,4:00pm,03:00:00,Short Courses,Short Course (GenAI),,courses/index.html#haoda_fu,Fertitta Hall (JFF),Room 105
+,1:00pm,4:00pm,03:00:00,Short Courses,Short Course (GenAI 2),,courses/index.html#haoda_fu,Fertitta Hall (JFF),Room 105
 ,4:10pm,6:00pm,01:50:00,Main Track,Poster session,,,Fertitta Hall (JFF),ground floor lobby 
 ,6:00pm,6:30pm,00:30:00,Main Track,Break,,,,
 ,6:30pm,9:00pm,02:30:00,Main Track,Banquet Dinner,,,University Club of USC,
@@ -32,6 +32,6 @@ Day,When (start),When (end),Duration,Track,What,Speakers,Link,Location,Location 
 "Saturday, January 11th",7:45am,8:30am,00:45:00,Main Track,Breakfast,,,Fertitta Hall (JFF),ground floor lobby 
 ,8:30am,9:50am,01:20:00,Main Track,Invited Session 7 (3 talks),,,Fertitta Hall (JFF),Room 105
 ,9:50am,10:10am,00:20:00,Main Track,Coffee Break,,,Fertitta Hall (JFF),ground floor lobby 
-,10:10am,12:00pm,01:50:00,Main Track,Invited Session 8 (4 talks),,,Fertitta Hall (JFF),Room 105
-,12:00pm,12:10pm,00:10:00,Main Track,Closing remarks and poster awards,,,Fertitta Hall (JFF),Room 105
-,12:10pm,1:30pm,01:20:00,Main Track,Lunch,,,Fertitta Hall (JFF),ground floor lobby 
+,10:10am,11:30am,01:20:00,Main Track,Invited Session 8 (3 talks),,,Fertitta Hall (JFF),Room 105
+,11:00am,11:50am,00:20:00,Main Track,Closing remarks and poster awards,,,Fertitta Hall (JFF),Room 105
+,11:50am,1:20pm,01:30:00,Main Track,Lunch,,,Fertitta Hall (JFF),ground floor lobby 

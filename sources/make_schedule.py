@@ -46,9 +46,11 @@ html_content = """
             box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
         }
         .event-title {
+            display: inline-block;
             font-weight: bold;
         }
         .event-time {
+            display: inline-block;
             font-style: italic;
             margin-bottom: 5px;
         }
@@ -85,7 +87,7 @@ html_content = """
     <h2>Tentative Conference Schedule</h2>
 """
 
-def shift_virtual_times(day_df, min_duration=30):
+def shift_virtual_times(day_df, min_duration=35):
     """
     Adjust virtual times for events in day_df to enforce minimum durations
     and maintain alignment across tracks by shifting subsequent events as needed.
@@ -216,31 +218,43 @@ def generate_schedule_html(df, location_df, session_df):
                 top_offset = calculate_offset(row['When (start, virtual)']) + title_offset
                 height = calculate_height(row['When (start, virtual)'], row['When (end, virtual)'])
                 event_time = f"{row['When (start)'].strftime('%I:%M %p')} - {row['When (end)'].strftime('%I:%M %p')}"
+                event_duration = (row['When (end)'] - row['When (start)']).total_seconds() / 60
+                hours = int(event_duration // 60)  # Whole hours
+                minutes = int(event_duration % 60)  # Remaining minutes
+
+                if hours > 0:  # Format as "Xh Ym" for events over 1 hour
+                    duration_str = f"({hours}h {minutes}m)" if minutes > 0 else f"({hours}h)"
+                else:  # Format as "Xm" for shorter events
+                    duration_str = f"({minutes}m)"
                 event_html = f"<a href='{row['Link']}'>{row['What']}</a>" if pd.notna(row['Link']) else row['What']
                 location_html = f"<b>Location:</b> {row['Location']}" if pd.notna(row['Location']) else ""
                 speakers_html = session_speakers.get(row['What'], "")
 
                 event = row['What']
-                spacing = "&nbsp;&nbsp;|&nbsp;&nbsp;"
+                spacing = "&nbsp;&nbsp;"
+                spacing_2 = "&nbsp;&nbsp;|&nbsp;&nbsp;"
 
                 if pd.notna(event) and event.lower().startswith("invited"):
                     track_content += f"""
                     <div class="event" style="top: {top_offset}px; height: {height}px;">
-                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-time">{event_time}{spacing}{duration_str}</div>
+                    <div class="event-title">{spacing_2}{event_html}</div>
                     <div class="event-details">{speakers_html}<br>{location_html}</div>
                     </div>
                     """
                 elif pd.notna(event) and event.lower().startswith("short"):
                     track_content += f"""
                     <div class="event" style="top: {top_offset}px; height: {height}px;">
-                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-time">{event_time}{spacing}{duration_str}</div>
+                    <div class="event-title">{spacing_2}{event_html}</div>
                     <div class="event-details">{location_html}</div>
                     </div>
                     """
                 else:
                     track_content += f"""
                     <div class="event" style="top: {top_offset}px; height: {height}px;">
-                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-time">{event_time}{spacing}{duration_str}</div>
+                    <div class="event-title">{spacing_2}{event_html}</div>
                     <div class="event-details">{location_html}</div>
                     </div>
                     """
