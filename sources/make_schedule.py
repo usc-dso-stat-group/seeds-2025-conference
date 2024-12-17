@@ -1,5 +1,7 @@
 import pandas as pd
 from datetime import datetime
+import numpy as np
+import pdb
 
 csv_file = "schedule.csv"
 location_csv = "locations.csv"
@@ -21,6 +23,42 @@ html_content = """
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
     <title>Schedule | SEEDS Conference</title>
+    <style>
+        .schedule {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .track-column {
+            flex: 1;
+            position: relative;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 20px;
+            height: 100%; /* Ensure track column fills parent height */
+        }
+        .event {
+            position: absolute;
+            left: 10px;
+            width: calc(95%);
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        .event-title {
+            font-weight: bold;
+        }
+        .event-time {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        .track1 {
+            background-color: #e6f7ff; /* Light blue for Track 1 */
+        }
+        .track2 {
+            background-color: #fff5e6; /* Light orange for Track 2 */
+        }
+    </style>
 </head>
 
 <body>
@@ -35,221 +73,216 @@ html_content = """
         </div>
     </div>
 
-    <style>
-    .navigation {
-        display: flex;
-        justify-content: space-around;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .navigation a {
-        text-decoration: none;
-        padding: 10px 15px;
-        color: #007bff;
-        font-size: 24px; /* Increased font size */
-        font-weight: 500; /* Medium weight for balance */
-        border: 1px solid transparent;
-        border-radius: 4px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .navigation a:hover {
-        background-color: #007bff;
-        color: white;
-        border-color: #0056b3;
-    }
-    .navigation a.current {
-        font-weight: bold;
-        color: white;
-        background-color: #007bff;
-    }
-</style>
+    <div class="navigation">
+        <a title="Conference Home Page" href=".">Home</a>
+        <a title="Register for the Conference" href="registration">Registration</a>
+        <a title="Explore Short Courses" href="courses">Short Courses</a>
+        <a title="View Conference Sessions" href="sessions">Sessions</a>
+        <a class="current" title="See the Full Schedule" href="schedule">Schedule</a>
+        <a title="Find Venue Details" href="venue">Venue</a>
+    </div>
 
-<div class="navigation">
-    <a title="Conference Home Page" href=".">Home</a>
-    <a title="Register for the Conference" href="registration">Registration</a>
-    <a title="Explore Short Courses" href="courses">Short Courses</a>
-    <a title="View Conference Sessions" href="sessions">Sessions</a>
-    <a class="current" title="See the Full Schedule" href="schedule">Schedule</a>
-    <a title="Find Venue Details" href="venue">Venue</a>
-</div>
-
-    <br>
-
+    <h2>Tentative Conference Schedule</h2>
 """
 
-def generate_schedule_html(csv_file, location_csv, session_csv, output_file):
+def shift_virtual_times(day_df, min_duration=30):
     """
-    Generate an HTML schedule, including speakers for Invited Sessions.
+    Adjust virtual times for events in day_df to enforce minimum durations
+    and maintain alignment across tracks by shifting subsequent events as needed.
 
     Parameters:
-        csv_file (str): Path to the schedule CSV file.
-        location_csv (str): Path to the location CSV file.
-        session_csv (str): Path to the session details CSV file with speakers.
-        output_file (str): Output HTML file path.
+        day_df (pd.DataFrame): DataFrame containing events for a single day.
+        min_duration (int): Minimum virtual duration in minutes.
 
     Returns:
-        str: HTML content for the schedule.
+        pd.DataFrame: Updated day_df with shifted virtual times.
     """
-    # Read the CSV files
-    df = pd.read_csv(csv_file)
-    location_df = pd.read_csv(location_csv)
-    session_df = pd.read_csv(session_csv, sep=',')
+    # Convert minimum duration to timedelta
+    min_duration_td = pd.to_timedelta(min_duration, unit='m')
+
+    # Sort events by virtual start time across all tracks
+    day_df = day_df.sort_values('When (start, virtual)').reset_index(drop=True)
+
+    for idx, event in day_df.iterrows():
+        # Align the start time with the global end time
+        start_virtual = event['When (start, virtual)']
+        end_virtual = event['When (end, virtual)']
+        duration = end_virtual - start_virtual
+
+        # Extend the event to meet the minimum duration
+        if duration < min_duration_td:
+            new_end_virtual = start_virtual + min_duration_td
+            shift = new_end_virtual - end_virtual
+        else:
+            shift = pd.Timedelta(0)
+        
+        # Update virtual times for the current event
+        day_df.at[idx, 'When (end, virtual)'] += shift
+
+        # Apply the shift to subsequent events if needed
+        if shift > pd.Timedelta(0) and idx + 1 < len(day_df):
+            for idx2 in range(idx+1, len(day_df)):
+                if day_df.loc[idx2, 'When (start)'] >= day_df.loc[idx, 'When (end)']:
+                    day_df.loc[idx2, 'When (start, virtual)'] += shift
+                    day_df.loc[idx2, 'When (end, virtual)'] += shift
+
+    # Add a Virtual Duration column
+    day_df['Virtual Duration'] = (day_df['When (end, virtual)'] - day_df['When (start, virtual)']).dt.total_seconds() / 60
+
+    return day_df
+
+
+
+
+def generate_schedule_html(df, location_df, session_df):
+    """
+    Generate HTML for the schedule dynamically based on day and track.
+
+    Parameters:
+        df (pd.DataFrame): Schedule data.
+        location_df (pd.DataFrame): Location data.
+        session_df (pd.DataFrame): Session details.
+
+    Returns:
+        str: Generated HTML content.
+    """
+    def preprocess_time_column(column):
+        """Normalize time strings."""
+        column = column.str.replace(r'([apAP][mM])$', r' \1', regex=True)
+        return pd.to_datetime(column, format='%I:%M %p', errors='coerce')
+
+    # Preprocess time columns
+    df['When (start)'] = preprocess_time_column(df['When (start)'])
+    df['When (end)'] = preprocess_time_column(df['When (end)'])
+
+    # Add virtual times (for alignment)
+    df['When (start, virtual)'] = df['When (start)']
+    df['When (end, virtual)'] = df['When (end)']
+
+    # Add a default Track column if missing
+    if 'Track' not in df.columns:
+        df['Track'] = 'Single Track'
 
     # Create a dictionary for location links
     location_links = dict(zip(location_df['Location'], location_df['Location link']))
-    
-    # Function to format speaker links
+
+    # Format speaker links
     def format_speaker_links(speakers_str):
-        """
-        Convert a list of speakers separated by ';' into HTML hyperlinks.
-        Joins first and middle names with underscores and appends the last name.
-        """
         speakers = speakers_str.split(";")
-        speaker_links = []
-        for speaker in speakers:
-            speaker = speaker.strip()
-            if speaker:
-                name_parts = speaker.split()
-                last_middle = " ".join(name_parts[1:])  # Join all but the first part with spaces
-                first = name_parts[0]  # First part
-                link = f"sessions/index.html#{first.lower()}_{last_middle.lower()}"  # Combine for the link
-                speaker_links.append(f'<a href="{link}">{speaker}</a>')
-        return ", ".join(speaker_links)
+        return ", ".join(
+            f'<a href="sessions/index.html#{s.strip().replace(" ", "_").lower()}">{s.strip()}</a>'
+            for s in speakers if s.strip()
+        )
 
-    # Update session_df to include formatted speaker links
+    # Add speaker links to session_df
     session_df['Speakers'] = session_df['Speakers'].apply(lambda x: format_speaker_links(x) if pd.notna(x) else "")
-
-    # Create a dictionary for session speakers with hyperlinks
     session_speakers = dict(zip(session_df['Session title'], session_df['Speakers']))
 
-    # Initialize HTML content
-    html_content = """
-    <h2>Tentative Conference Schedule</h2>
-    """
+    # Initialize HTML
+    day_html_content = ""
 
-    # Variable to keep track of the current day and the previous event's end time
-    current_day = ""
-    previous_end_time = None
+    # Process each day
+    grouped_days = df.groupby('Day', sort=False)
+    for day, day_df in grouped_days:
+        day_html_content += f"<h3>{day}</h3>\n"
 
-    # Define a function to process time strings
-    def process_time(time_value):
-        if isinstance(time_value, float):
-            return None
-        time_str = str(time_value).strip()
-        if time_str in ['nan', 'NaN', '', None]:
-            return None
-        if '.' in time_str:
-            time_str = time_str.replace('.', ':') + 'am'
-        return time_str
+        # Shift virtual times
+        day_df = shift_virtual_times(day_df)
 
-    # Generate HTML for each row in the CSV
-    for _, row in df.iterrows():
-        day = row['Day'] if pd.notna(row['Day']) else ""  # Handle NaN
-        start_time = process_time(row['When (start)'])
-        end_time = process_time(row['When (end)'])
-        event = row['What'] if pd.notna(row['What']) else ""  # Handle NaN
-        event_link = row['Link'] if pd.notna(row['Link']) else ""  # Handle NaN
-        location = row['Location'] if not pd.isna(row['Location']) else ""
-        location_details = row['Location details'] if not pd.isna(row['Location details']) else ""
+        earliest_time = day_df['When (start, virtual)'].min()
+        latest_time = day_df['When (end, virtual)'].max()
+        pixels_per_minute = 2
+        min_schedule_height = 200  # Minimum height for each day's schedule
+        title_offset = 50
 
-        # Add a new day header if needed
-        if day and day != current_day:
-            html_content += f"<h4>{day}</h4>\n"
-            current_day = day
-            previous_end_time = None  # Reset for the new day
+        def calculate_offset(time):
+            return int((time - earliest_time).total_seconds() / 60) * pixels_per_minute
 
-        # Validate time continuity
-        if start_time and previous_end_time:
-            time_format = "%I:%M%p"
-            start_dt = datetime.strptime(start_time, time_format)
-            prev_end_dt = datetime.strptime(previous_end_time, time_format)
+        def calculate_height(start, end):
+            duration = (end - start).total_seconds() / 60
+            return max(50, int(duration * pixels_per_minute))  # Minimum height of 50px
 
-            if start_dt != prev_end_dt:
-                print(f"Error: Event '{event}' on {day} starts at {start_time}, "
-                      f"which does not match the previous event's end time ({previous_end_time}).")
+        # Create tracks
+        track_columns_html = ""
+        max_track_height = 0
+        for track, track_events in day_df.groupby('Track'):
+            track_content = ""
+            track_start_time = track_events['When (start, virtual)'].min()
+            track_end_time = track_events['When (end, virtual)'].max()
+            track_minutes = (track_end_time - track_start_time).total_seconds() / 60
+            max_track_height = max(max_track_height, int(track_minutes * pixels_per_minute))
 
-        # Update the previous end time
-        previous_end_time = end_time if end_time else previous_end_time
+            for _, row in track_events.iterrows():
+                top_offset = calculate_offset(row['When (start, virtual)']) + title_offset
+                height = calculate_height(row['When (start, virtual)'], row['When (end, virtual)'])
+                event_time = f"{row['When (start)'].strftime('%I:%M %p')} - {row['When (end)'].strftime('%I:%M %p')}"
+                event_html = f"<a href='{row['Link']}'>{row['What']}</a>" if pd.notna(row['Link']) else row['What']
+                location_html = f"<b>Location:</b> {row['Location']}" if pd.notna(row['Location']) else ""
+                speakers_html = session_speakers.get(row['What'], "")
 
-        # Add link to event if provided
-        if event_link:
-            event_html = f"<a title=\"{event}\" href=\"{event_link}\">{event}</a>"
-        else:
-            event_html = f"{event}"
+                event = row['What']
+                spacing = "&nbsp;&nbsp;|&nbsp;&nbsp;"
 
-        # Add speakers for "Invited Session X"
-        speakers_html = ""
-        if "Invited Session" in event:
-            speakers = session_speakers.get(event, "")
-            if speakers:
-                speakers_html = f"<span style='font-size: normal;'><b>Speakers:</b> {speakers}</span><br>"
+                if pd.notna(event) and event.lower().startswith("invited"):
+                    track_content += f"""
+                    <div class="event" style="top: {top_offset}px; height: {height}px;">
+                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-details">{speakers_html}<br>{location_html}</div>
+                    </div>
+                    """
+                elif pd.notna(event) and event.lower().startswith("short"):
+                    track_content += f"""
+                    <div class="event" style="top: {top_offset}px; height: {height}px;">
+                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-details">{location_html}</div>
+                    </div>
+                    """
+                else:
+                    track_content += f"""
+                    <div class="event" style="top: {top_offset}px; height: {height}px;">
+                    <div class="event-title">{event_time}{spacing}{event_html}</div>
+                    <div class="event-details">{location_html}</div>
+                    </div>
+                    """
 
-        # Format location details
-        link = location_links.get(location, "")
-        if location and link:
-            location_html = f"<b>Location:</b> <a title=\"{location}\" href=\"{link}\">{location}</a>"
-        elif location:
-            location_html = f"{location}"
-        else:
-            location_html = ""
-        location_text = f", {location_details}" if location_details else ""
-        location_html += location_text
 
-        # Format the time range
-        if start_time and end_time:
-            start_dt = datetime.strptime(start_time, "%I:%M%p")
-            end_dt = datetime.strptime(end_time, "%I:%M%p")
-            duration = end_dt - start_dt
-            hours, remainder = divmod(duration.seconds, 3600)
-            minutes = remainder // 60
-            formatted_duration = f"{hours}h {minutes}m" if hours > 0 else f"{minutes}m"
-            formatted_time_range = f"""<div style="width: 140px; text-align: center;">
-                {start_time} - {end_time}<br>
-                <span style="font-size: smaller;">Duration: {formatted_duration}</span>
-            </div>"""
-        else:
-            formatted_time_range = ""
+            # Assign CSS classes based on track name
+            track_class = "track1" if "Main Track" in track else "track2"  # Example condition
+            track_columns_html += f"""
+            <div class="track-column {track_class}">
+                <h5>{track}</h5>
+                {track_content}
+            </div>
+            """
 
-        # Add event HTML
-        html_content += f"""
-        <table>
-            <tr>
-                <td class=\"date\" rowspan=\"3\">
-                    {formatted_time_range}
-                </td>
-                <td class=\"title\">
-                    {event_html if event_html else event}
-                </td>
-            </tr>
-            <tr>
-                <td class=\"abstract\">
-                    {speakers_html}
-                    {location_html}
-                </td>
-            </tr>
-        </table>
+        # Use the maximum track height for the schedule
+        total_day_height = max(max_track_height, min_schedule_height) + title_offset
+
+        # Set height in the schedule div
+        day_html_content += f"""
+        <div class="schedule" style="height: {total_day_height}px;">
+            {track_columns_html}
+        </div> <br><br>
         """
 
-    return html_content
+    return day_html_content
 
+# Read data
+df = pd.read_csv(csv_file)
+location_df = pd.read_csv(location_csv)
+session_df = pd.read_csv(session_csv, sep=',')
 
-html_content += generate_schedule_html(csv_file, location_csv, session_csv, output_file)
+df['Day'] = df['Day'].fillna(method='ffill')
 
+html_content += generate_schedule_html(df, location_df, session_df)
 
 html_content += """
-<footer>
-    &copy; Conference Organizers
-    &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
-</footer>
-
+<footer>&copy; Conference Organizers</footer>
 </body>
 </html>
-
 """
 
-# Write to the output HTML file
+# Write to file
 with open(output_file, "w") as file:
     file.write(html_content)
 

@@ -11,6 +11,42 @@
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
     <title>Schedule | SEEDS Conference</title>
+    <style>
+        .schedule {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .track-column {
+            flex: 1;
+            position: relative;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            padding: 20px;
+            height: 100%; /* Ensure track column fills parent height */
+        }
+        .event {
+            position: absolute;
+            left: 10px;
+            width: calc(95%);
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        .event-title {
+            font-weight: bold;
+        }
+        .event-time {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        .track1 {
+            background-color: #e6f7ff; /* Light blue for Track 1 */
+        }
+        .track2 {
+            background-color: #fff5e6; /* Light orange for Track 2 */
+        }
+    </style>
 </head>
 
 <body>
@@ -25,771 +61,227 @@
         </div>
     </div>
 
-    <style>
-    .navigation {
-        display: flex;
-        justify-content: space-around;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .navigation a {
-        text-decoration: none;
-        padding: 10px 15px;
-        color: #007bff;
-        font-size: 24px; /* Increased font size */
-        font-weight: 500; /* Medium weight for balance */
-        border: 1px solid transparent;
-        border-radius: 4px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .navigation a:hover {
-        background-color: #007bff;
-        color: white;
-        border-color: #0056b3;
-    }
-    .navigation a.current {
-        font-weight: bold;
-        color: white;
-        background-color: #007bff;
-    }
-</style>
-
-<div class="navigation">
-    <a title="Conference Home Page" href=".">Home</a>
-    <a title="Register for the Conference" href="registration">Registration</a>
-    <a title="Explore Short Courses" href="courses">Short Courses</a>
-    <a title="View Conference Sessions" href="sessions">Sessions</a>
-    <a class="current" title="See the Full Schedule" href="schedule">Schedule</a>
-    <a title="Find Venue Details" href="venue">Venue</a>
-</div>
-
-    <br>
-
+    <div class="navigation">
+        <a title="Conference Home Page" href=".">Home</a>
+        <a title="Register for the Conference" href="registration">Registration</a>
+        <a title="Explore Short Courses" href="courses">Short Courses</a>
+        <a title="View Conference Sessions" href="sessions">Sessions</a>
+        <a class="current" title="See the Full Schedule" href="schedule">Schedule</a>
+        <a title="Find Venue Details" href="venue">Venue</a>
+    </div>
 
     <h2>Tentative Conference Schedule</h2>
-    <h4>Wednesday, January 8th</h4>
+<h3>Wednesday, January 8th</h3>
 
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                8:30am - 9:00am<br>
-                <span style="font-size: smaller;">Duration: 30m</span>
+        <div class="schedule" style="height: 1010px;">
+            
+            <div class="track-column track2">
+                <h5>Short Courses</h5>
+                
+                    <div class="event" style="top: 50px; height: 60px;">
+                    <div class="event-title">08:30 AM - 09:00 AM&nbsp;&nbsp;|&nbsp;&nbsp;Registration and Breakfast!</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 110px; height: 360px;">
+                    <div class="event-title">09:00 AM - 12:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='courses/index.html#wes_gruver'>Short Course (LLMs)</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 470px; height: 180px;">
+                    <div class="event-title">12:00 PM - 01:30 PM&nbsp;&nbsp;|&nbsp;&nbsp;Lunch</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 650px; height: 360px;">
+                    <div class="event-title">01:30 PM - 04:30 PM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='courses/index.html#john_cherian'>Short Course (Conformal Inference)</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
             </div>
-                </td>
-                <td class="title">
-                    Registration and Breakfast! 
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                9:00am - 12:00pm<br>
-                <span style="font-size: smaller;">Duration: 3h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Short Course (LLMs)" href="courses/index.html#wes_gruver">Short Course (LLMs)</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                12:00pm - 1:30pm<br>
-                <span style="font-size: smaller;">Duration: 1h 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Lunch
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                1:30pm - 4:30pm<br>
-                <span style="font-size: smaller;">Duration: 3h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Short Course (Conformal Inference)" href="courses/index.html#john_cherian">Short Course (Conformal Inference)</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    
-                </td>
-                <td class="title">
-                    
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    
-                </td>
-            </tr>
-        </table>
-        <h4>Thursday, January 9th</h4>
+            
+        </div> <br><br>
+        <h3>Thursday, January 9th</h3>
 
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                7:45am - 8:30am<br>
-                <span style="font-size: smaller;">Duration: 45m</span>
+        <div class="schedule" style="height: 1340px;">
+            
+            <div class="track-column track1">
+                <h5>Main Track</h5>
+                
+                    <div class="event" style="top: 50px; height: 90px;">
+                    <div class="event-title">07:45 AM - 08:30 AM&nbsp;&nbsp;|&nbsp;&nbsp;Registration and Breakfast!</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 140px; height: 60px;">
+                    <div class="event-title">08:30 AM - 08:40 AM&nbsp;&nbsp;|&nbsp;&nbsp;Opening remarks</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 200px; height: 160px;">
+                    <div class="event-title">08:40 AM - 10:00 AM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 1 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#thomas_berrett">Thomas Berrett</a>, <a href="sessions/index.html#timothy_cannings">Timothy Cannings</a>, <a href="sessions/index.html#jean_feng">Jean Feng</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 360px; height: 60px;">
+                    <div class="event-title">10:00 AM - 10:30 AM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 420px; height: 120px;">
+                    <div class="event-title">10:30 AM - 11:30 AM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='sessions/index.html#xihong_lin'>Keynote lecture – Xihong Lin</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 540px; height: 180px;">
+                    <div class="event-title">11:30 AM - 01:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Lunch</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 720px; height: 160px;">
+                    <div class="event-title">01:00 PM - 02:20 PM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 2 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#nicole_pashley">Nicole Pashley</a>, <a href="sessions/index.html#josé_r._zubizarreta">José R. Zubizarreta</a>, <a href="sessions/index.html#jelena_bradic">Jelena Bradic</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 880px; height: 60px;">
+                    <div class="event-title">02:20 PM - 02:40 PM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 940px; height: 220px;">
+                    <div class="event-title">02:40 PM - 04:30 PM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 3 (4 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#yuhua_zhu">Yuhua Zhu</a>, <a href="sessions/index.html#yichen_zhang">Yichen Zhang</a>, <a href="sessions/index.html#annie_qu">Annie Qu</a>, <a href="sessions/index.html#lan_wang">Lan Wang</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 1160px; height: 60px;">
+                    <div class="event-title">04:30 PM - 05:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 1220px; height: 120px;">
+                    <div class="event-title">05:00 PM - 06:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='sessions/index.html#jianqing_fan'>Keynote lecture – Jianqing Fan</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
             </div>
-                </td>
-                <td class="title">
-                    Registration and Breakfast! 
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                8:30am - 8:40am<br>
-                <span style="font-size: smaller;">Duration: 10m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Opening remarks
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                8:40am - 10:00am<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 1 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#thomas_berrett">Thomas Berrett</a>, <a href="sessions/index.html#timothy_cannings">Timothy Cannings</a>, <a href="sessions/index.html#jean_feng">Jean Feng</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                10:00am - 10:30am<br>
-                <span style="font-size: smaller;">Duration: 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                10:30am - 11:30am<br>
-                <span style="font-size: smaller;">Duration: 1h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Keynote lecture – Xihong Lin" href="sessions/index.html#xihong_lin">Keynote lecture – Xihong Lin</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                11:30am - 1:00pm<br>
-                <span style="font-size: smaller;">Duration: 1h 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Lunch
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                1:00pm - 2:20pm<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 2 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#nicole_pashley">Nicole Pashley</a>, <a href="sessions/index.html#josé_r. zubizarreta">José R. Zubizarreta</a>, <a href="sessions/index.html#jelena_bradic">Jelena Bradic</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                2:20pm - 2:40pm<br>
-                <span style="font-size: smaller;">Duration: 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                2:40pm - 4:30pm<br>
-                <span style="font-size: smaller;">Duration: 1h 50m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 3 (4 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#yuhua_zhu">Yuhua Zhu</a>, <a href="sessions/index.html#yichen_zhang">Yichen Zhang</a>, <a href="sessions/index.html#annie_qu">Annie Qu</a>, <a href="sessions/index.html#lan_wang">Lan Wang</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                4:30pm - 5:00pm<br>
-                <span style="font-size: smaller;">Duration: 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                5:00pm - 6:00pm<br>
-                <span style="font-size: smaller;">Duration: 1h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Keynote lecture – Jianqing Fan" href="sessions/index.html#jianqing_fan">Keynote lecture – Jianqing Fan</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    
-                </td>
-                <td class="title">
-                    
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    
-                </td>
-            </tr>
-        </table>
-        <h4>Friday, January 10th</h4>
+            
+        </div> <br><br>
+        <h3>Friday, January 10th</h3>
 
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                7:45am - 8:30am<br>
-                <span style="font-size: smaller;">Duration: 45m</span>
+        <div class="schedule" style="height: 1660px;">
+            
+            <div class="track-column track1">
+                <h5>Main Track</h5>
+                
+                    <div class="event" style="top: 50px; height: 90px;">
+                    <div class="event-title">07:45 AM - 08:30 AM&nbsp;&nbsp;|&nbsp;&nbsp;Breakfast</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 140px; height: 220px;">
+                    <div class="event-title">08:30 AM - 10:20 AM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 4 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#yi_yu">Yi Yu</a>, <a href="sessions/index.html#yuqi_gu">Yuqi Gu</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 360px; height: 60px;">
+                    <div class="event-title">10:20 AM - 10:40 AM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 420px; height: 120px;">
+                    <div class="event-title">10:40 AM - 11:40 AM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='sessions/index.html#richard_samworth'>Keynote lecture – Richard Samworth</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 540px; height: 160px;">
+                    <div class="event-title">11:40 AM - 01:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Lunch</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 700px; height: 160px;">
+                    <div class="event-title">01:00 PM - 02:20 PM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 5 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#cynthia_rush">Cynthia Rush</a>, <a href="sessions/index.html#alessandro_rinaldo">Alessandro Rinaldo</a>, <a href="sessions/index.html#jane-ling_wang">Jane-Ling Wang</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 860px; height: 60px;">
+                    <div class="event-title">02:20 PM - 02:50 PM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 920px; height: 160px;">
+                    <div class="event-title">02:50 PM - 04:10 PM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 6 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#miaoyan_wang">Miaoyan Wang</a>, <a href="sessions/index.html#snigdha_panigrahi">Snigdha Panigrahi</a>, <a href="sessions/index.html#damla_senturk">Damla Senturk</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 1080px; height: 220px;">
+                    <div class="event-title">04:10 PM - 06:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Poster session</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+                    <div class="event" style="top: 1300px; height: 60px;">
+                    <div class="event-title">06:00 PM - 06:30 PM&nbsp;&nbsp;|&nbsp;&nbsp;Break</div>
+                    <div class="event-details"></div>
+                    </div>
+                    
+                    <div class="event" style="top: 1360px; height: 300px;">
+                    <div class="event-title">06:30 PM - 09:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Banquet Dinner</div>
+                    <div class="event-details"><b>Location:</b> University Club of USC</div>
+                    </div>
+                    
             </div>
-                </td>
-                <td class="title">
-                    Breakfast
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+            
+            <div class="track-column track2">
+                <h5>Short Courses</h5>
+                
+                    <div class="event" style="top: 700px; height: 360px;">
+                    <div class="event-title">01:00 PM - 04:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;<a href='courses/index.html#haoda_fu'>Short Course (GenAI)</a></div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                8:30am - 10:20am<br>
-                <span style="font-size: smaller;">Duration: 1h 50m</span>
             </div>
-                </td>
-                <td class="title">
-                    Invited Session 4 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#yi_yu">Yi Yu</a>, <a href="sessions/index.html#yuqi_gu">Yuqi Gu</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                10:20am - 10:40am<br>
-                <span style="font-size: smaller;">Duration: 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                10:40am - 11:40am<br>
-                <span style="font-size: smaller;">Duration: 1h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Keynote lecture – Richard Samworth" href="sessions/index.html#richard_samworth">Keynote lecture – Richard Samworth</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                11:40am - 1:00pm<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Lunch
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                1:00pm - 2:20pm<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 5 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#cynthia_rush">Cynthia Rush</a>, <a href="sessions/index.html#alessandro_rinaldo">Alessandro Rinaldo</a>, <a href="sessions/index.html#jane-ling_wang">Jane-Ling Wang</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                2:20pm - 2:50pm<br>
-                <span style="font-size: smaller;">Duration: 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                2:50pm - 4:10pm<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 6 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#miaoyan_wang">Miaoyan Wang</a>, <a href="sessions/index.html#snigdha_panigrahi">Snigdha Panigrahi</a>, <a href="sessions/index.html#damla_senturk">Damla Senturk</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                4:10pm - 6:00pm<br>
-                <span style="font-size: smaller;">Duration: 1h 50m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Poster session
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                6:00pm - 6:30pm<br>
-                <span style="font-size: smaller;">Duration: 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                6:30pm - 9:00pm<br>
-                <span style="font-size: smaller;">Duration: 2h 30m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Banquet Dinner
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    <b>Location:</b> <a title="University Club of USC" href="https://maps.usc.edu/?id=1928#!m/647089?share">University Club of USC</a>
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    
-                </td>
-                <td class="title">
-                    
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    
-                    
-                </td>
-            </tr>
-        </table>
-        <h4>Saturday, January 11th</h4>
+            
+        </div> <br><br>
+        <h3>Saturday, January 11th</h3>
 
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                7:45am - 8:30am<br>
-                <span style="font-size: smaller;">Duration: 45m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Breakfast
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+        <div class="schedule" style="height: 800px;">
+            
+            <div class="track-column track1">
+                <h5>Main Track</h5>
+                
+                    <div class="event" style="top: 50px; height: 90px;">
+                    <div class="event-title">07:45 AM - 08:30 AM&nbsp;&nbsp;|&nbsp;&nbsp;Breakfast</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                8:30am - 9:50am<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 7 (3 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#yaniv_romano">Yaniv Romano</a>, <a href="sessions/index.html#zhimei_ren">Zhimei Ren</a>, <a href="sessions/index.html#anna_neufeld">Anna Neufeld</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                9:50am - 10:10am<br>
-                <span style="font-size: smaller;">Duration: 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Coffee Break
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+                    <div class="event" style="top: 140px; height: 160px;">
+                    <div class="event-title">08:30 AM - 09:50 AM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 7 (3 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#yaniv_romano">Yaniv Romano</a>, <a href="sessions/index.html#zhimei_ren">Zhimei Ren</a>, <a href="sessions/index.html#anna_neufeld">Anna Neufeld</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                10:10am - 12:00pm<br>
-                <span style="font-size: smaller;">Duration: 1h 50m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Invited Session 8 (4 talks)
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
-                    <span style='font-size: normal;'><b>Speakers:</b> <a href="sessions/index.html#jingyi_jessica li">Jingyi Jessica Li</a>, <a href="sessions/index.html#lan_gao">Lan Gao</a>, <a href="sessions/index.html#jose_angel sanchez gomez">Jose Angel Sanchez Gomez</a>, <a href="sessions/index.html#ana_maria kenney">Ana Maria Kenney</a></span><br>
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                12:00pm - 12:10pm<br>
-                <span style="font-size: smaller;">Duration: 10m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Closing remarks and poster awards
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+                    <div class="event" style="top: 300px; height: 60px;">
+                    <div class="event-title">09:50 AM - 10:10 AM&nbsp;&nbsp;|&nbsp;&nbsp;Coffee Break</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                12:10pm - 1:30pm<br>
-                <span style="font-size: smaller;">Duration: 1h 20m</span>
-            </div>
-                </td>
-                <td class="title">
-                    Lunch
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+                    <div class="event" style="top: 360px; height: 220px;">
+                    <div class="event-title">10:10 AM - 12:00 PM&nbsp;&nbsp;|&nbsp;&nbsp;Invited Session 8 (4 talks)</div>
+                    <div class="event-details"><a href="sessions/index.html#jingyi_jessica_li">Jingyi Jessica Li</a>, <a href="sessions/index.html#lan_gao">Lan Gao</a>, <a href="sessions/index.html#jose_angel_sanchez_gomez">Jose Angel Sanchez Gomez</a>, <a href="sessions/index.html#ana_maria_kenney">Ana Maria Kenney</a><br><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, ground floor lobby 
-                </td>
-            </tr>
-        </table>
-        
-        <table>
-            <tr>
-                <td class="date" rowspan="3">
-                    <div style="width: 140px; text-align: center;">
-                1:30pm - 4:30pm<br>
-                <span style="font-size: smaller;">Duration: 3h 0m</span>
-            </div>
-                </td>
-                <td class="title">
-                    <a title="Short Course (GenAI)" href="courses/index.html#haoda_fu">Short Course (GenAI)</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="abstract">
+                    <div class="event" style="top: 580px; height: 60px;">
+                    <div class="event-title">12:00 PM - 12:10 PM&nbsp;&nbsp;|&nbsp;&nbsp;Closing remarks and poster awards</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
                     
-                    <b>Location:</b> <a title="Fertitta Hall (JFF)" href="https://maps.usc.edu/?id=1928#!m/583477?share">Fertitta Hall (JFF)</a>, Room 105
-                </td>
-            </tr>
-        </table>
+                    <div class="event" style="top: 640px; height: 160px;">
+                    <div class="event-title">12:10 PM - 01:30 PM&nbsp;&nbsp;|&nbsp;&nbsp;Lunch</div>
+                    <div class="event-details"><b>Location:</b> Fertitta Hall (JFF)</div>
+                    </div>
+                    
+            </div>
+            
+        </div> <br><br>
         
-<footer>
-    &copy; Conference Organizers
-    &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
-</footer>
-
+<footer>&copy; Conference Organizers</footer>
 </body>
 </html>
-
