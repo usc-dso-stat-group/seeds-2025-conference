@@ -258,11 +258,17 @@ def generate_schedule_html(df, location_df, session_df):
                 event_html = f"<a href='{row['Link']}'>{row['What']}</a>" if pd.notna(row['Link']) else row['What']
                 # Check if location exists and has a link
                 location = row['Location']
-                location_setails = row['Location details']
+                location_details = row['Location details']
                 if pd.notna(location) and location in location_links:
-                    location_html = f"<b>Location:</b> <a href='{location_links[location]}'>{location}</a>, {location_setails}"
+                    if pd.notna(location_details):
+                        location_html = f"<b>Location:</b> <a href='{location_links[location]}'>{location}</a>, {location_details}"
+                    else:
+                        location_html = f"<b>Location:</b> <a href='{location_links[location]}'>{location}</a>"
                 elif pd.notna(location):
-                    location_html = f"<b>Location:</b> {location}, {location_setails}"
+                    if pd.notna(location_details):
+                        location_html = f"<b>Location:</b> {location}, {location_details}"
+                    else:
+                        location_html = f"<b>Location:</b> {location}"
                 else:
                     location_html = ""
                 speakers_html = session_speakers.get(row['What'], "")
