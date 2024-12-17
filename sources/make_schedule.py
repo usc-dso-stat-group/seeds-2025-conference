@@ -113,7 +113,7 @@ html_content = """
         <a title="Find Venue Details" href="venue">Venue</a>
     </div>
 
-    <h2>Tentative Conference Schedule</h2>
+    <h2>Conference Schedule</h2>
 """
 
 def shift_virtual_times(day_df, min_duration=35):
