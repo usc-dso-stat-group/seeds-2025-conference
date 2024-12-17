@@ -22,7 +22,7 @@ html_content = """
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
-    <title>Sessions | SEEDS Conference</title>
+    <title>Schedule | SEEDS Conference</title>
 </head>
 
 <body>
@@ -256,7 +256,15 @@ def generate_schedule_html(df, location_df, session_df):
                 else:  # Format as "Xm" for shorter events
                     duration_str = f"({minutes}m)"
                 event_html = f"<a href='{row['Link']}'>{row['What']}</a>" if pd.notna(row['Link']) else row['What']
-                location_html = f"<b>Location:</b> {row['Location']}" if pd.notna(row['Location']) else ""
+                # Check if location exists and has a link
+                location = row['Location']
+                location_setails = row['Location details']
+                if pd.notna(location) and location in location_links:
+                    location_html = f"<b>Location:</b> <a href='{location_links[location]}'>{location}</a>, {location_setails}"
+                elif pd.notna(location):
+                    location_html = f"<b>Location:</b> {location}, {location_setails}"
+                else:
+                    location_html = ""
                 speakers_html = session_speakers.get(row['What'], "")
 
                 event = row['What']
