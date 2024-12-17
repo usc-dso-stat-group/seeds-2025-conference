@@ -22,8 +22,50 @@ html_content = """
     <meta name="resource-type" content="document">
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="Conference">
-    <title>Schedule | SEEDS Conference</title>
+    <title>Sessions | SEEDS Conference</title>
+</head>
+
+<body>
+    <div class="banner">
+        <img src="assets/banner.jpg" alt="SEEDS Conference">
+        <div class="top-left">
+            <span class="title1">SEEDS</span><span class="title2">Conference</span> <span class="year">2025</span>
+        </div>
+        <div class="bottom-right">
+            January 8-11, 2025 <br> University of Southern California, Los Angeles (CA)
+        </div>
+    </div>
+
     <style>
+        .navigation {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .navigation a {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: #007bff;
+            font-size: 24px; /* Increased font size */
+            font-weight: 500; /* Medium weight for balance */
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .navigation a:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #0056b3;
+        }
+        .navigation a.current {
+            font-weight: bold;
+            color: white;
+            background-color: #007bff;
+        }
+
         .schedule {
             display: flex;
             margin-bottom: 20px;
@@ -61,19 +103,6 @@ html_content = """
             background-color: #fff5e6; /* Light orange for Track 2 */
         }
     </style>
-</head>
-
-<body>
-
-    <div class="banner">
-        <img src="assets/banner.jpg" alt="SEEDS Conference">
-        <div class="top-left">
-            <span class="title1">SEEDS</span><span class="title2">Conference</span> <span class="year">2025</span>
-        </div>
-        <div class="bottom-right">
-            January 8-11, 2025 <br> University of Southern California, Los Angeles (CA)
-        </div>
-    </div>
 
     <div class="navigation">
         <a title="Conference Home Page" href=".">Home</a>
