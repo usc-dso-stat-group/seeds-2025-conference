@@ -115,9 +115,9 @@ html_content = """
 <ul>
   <li>Three keynote presentations</li>
   <li>Invited academic sessions covering a wide range of cutting-edge topics in statistics and data science</li>
-  <li>Three short courses led by experts from academia and industry</li>
   <li>A contributed poster session, open to all registered participants</li>
   <li>Poster awards for students</li>
+  <li>Three short courses led by experts from academia and industry (separate registration)</li>
 </ul>
 
 
