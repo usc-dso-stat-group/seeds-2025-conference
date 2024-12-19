@@ -3,11 +3,13 @@ import pandas as pd
 # Input and output file paths
 input_keynote = "keynote_speakers.csv"
 input_invited = "invited_speakers.csv"
+input_posters = "posters.csv"
 output_html = "../sessions/index.html"
 
 # Read the CSV files
 df_keynote = pd.read_csv(input_keynote)
 df_invited = pd.read_csv(input_invited)
+df_posters = pd.read_csv(input_posters)
 
 # Start building the HTML content
 html_content = """
@@ -92,18 +94,28 @@ def extract_title_and_abstract(file_path):
     except FileNotFoundError:
         return "TBA", "TBA"
 
-def write_list_of_talks(df, title):
+def write_list_of_talks(df, title, label=None):
 
-    html_content = f"""
-    <h2>{title}</h2>
-    <p>
-    """
+    if label is None:
+        html_content = f"""
+        <h2>{title}</h2>
+        <p>
+        """
+
+    else:
+        html_content = f"""
+        <h2>{title}</h2><a id="{label}"></a>
+        <p>
+        """
 
     # Generate HTML table for each speaker
     for _, row in df.iterrows():
         speaker_name = row["Speaker Name"]
         affiliation = row["Affiliation"]
-        website = row["Website"]
+        if "Website" in df.keys():
+            website = row["Website"]
+        else:
+            website = None
         abstract_file = row["Abstract"]
 
         # Generate a unique link based on the speaker's name (lastname_firstname)
@@ -114,30 +126,57 @@ def write_list_of_talks(df, title):
         title, abstract = extract_title_and_abstract("abstracts/"+abstract_file)
 
         # Append speaker information to HTML content
-        html_content += f"""
-        <a id="{speaker_link_id}"></a>
-        <table>
-            <tr>
-                <td class="date" rowspan="2">
-                </td>
-                <td class="title">
-                    <a href="{website}">{speaker_name} ({affiliation})</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="speaker">
-                 {title}
-                </td>
-            </tr>
-            <tr>
-                <td class="date" rowspan="2">
-                </td>
-                <td class="abstract">
-                  Abstract: {abstract}
-                </td>
-            </tr>
-        </table>
-        """
+        if (website is None) or (pd.isna(website)):
+            html_content += f"""
+            <a id="{speaker_link_id}"></a>
+            <table>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="title">
+                        {speaker_name} ({affiliation})
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker">
+                     {title}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="abstract">
+                      Abstract: {abstract}
+                    </td>
+                </tr>
+            </table>
+            """
+
+        else:
+            html_content += f"""
+            <a id="{speaker_link_id}"></a>
+            <table>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="title">
+                        <a href="{website}">{speaker_name} ({affiliation})</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker">
+                     {title}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="abstract">
+                      Abstract: {abstract}
+                    </td>
+                </tr>
+            </table>
+            """
 
     # Close the HTML structure
     html_content += """
@@ -149,7 +188,7 @@ def write_list_of_talks(df, title):
 
 html_content += write_list_of_talks(df_keynote, "Keynote Talks")
 html_content += write_list_of_talks(df_invited, "Invited Talks")
-
+html_content += write_list_of_talks(df_posters, "Contributed Posters", label="posters")
 
 html_content += """
 <footer>
