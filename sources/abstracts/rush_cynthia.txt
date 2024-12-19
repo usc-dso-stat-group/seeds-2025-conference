@@ -1,3 +1,3 @@
-TBA
+Is It Easier to Count Communities Than Find Them?
 
-TBA
+Random graph models with community structure have been studied extensively in the literature. For both the problems of detecting and recovering community structure, an interesting landscape of statistical and computational phase transitions has emerged. A natural unanswered question is: might it be possible to infer properties of the community structure (for instance, the number and sizes of communities) even in situations where actually finding those communities is believed to be computationally hard? We show the answer is no. In particular, we consider certain hypothesis testing problems between models with different community structures, and we show (in the low-degree polynomial framework) that testing between two options is as hard as finding the communities. In addition, our methods give the first computational lower bounds for testing between two different “planted” distributions, whereas previous results have considered testing between a planted distribution and an i.i.d. “null” distribution. This is joint work with Fiona Skerman, Alexander S. Wein, and Dana Yang.

@@ -1,0 +1,3 @@
+Real-World Challenges in Ranking, Recommendation, and Causal Inference
+
+In this presentation I'll talk about some of the practical challenges we face in the area of experimentation, observational causal inference, ranking and recommendation from my experience at Snapchat and LinkedIn. In addition, I will share some of my personal journey as well, open discussions are welcomed. 
