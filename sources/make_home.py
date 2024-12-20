@@ -134,6 +134,11 @@ html_content = """
   no later than December 31, 2024.
 </p>
 
+<p>
+  <strong>Information for Poster Presenters</strong><br>
+  Maximum poster dimensions: 20 inches (width) × 30 inches (height).
+</p>
+
 
 """
 
