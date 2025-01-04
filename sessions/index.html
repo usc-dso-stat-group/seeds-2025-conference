@@ -168,29 +168,6 @@
                 </tr>
             </table>
             
-            <a id="jelena_bradic"></a>
-            <table>
-                <tr>
-                    <td class="date" rowspan="2">
-                    </td>
-                    <td class="title">
-                        <a href="http://www.jelenabradic.net/">Jelena Bradic (UC San Diego)</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="speaker">
-                     TBA
-                    </td>
-                </tr>
-                <tr>
-                    <td class="date" rowspan="2">
-                    </td>
-                    <td class="abstract">
-                      Abstract: TBA
-                    </td>
-                </tr>
-            </table>
-            
             <a id="timothy_cannings"></a>
             <table>
                 <tr>
@@ -616,14 +593,14 @@
                 </tr>
                 <tr>
                     <td class="speaker">
-                     TBA
+                     Differentially Private Quantile Regression with Applications to Inventory Policy Learning
                     </td>
                 </tr>
                 <tr>
                     <td class="date" rowspan="2">
                     </td>
                     <td class="abstract">
-                      Abstract: TBA
+                      Abstract: We introduce a novel approach for privacy-preserving quantile regression within the f -differential privacy framework, an extension of the classical (ϵ, δ)-differential privacy with several appealing properties. A key challenge is the nonsmoothness of the quantile loss function, which sets it apart from existing work on privacy-preserving algorithms in other settings. We develop a clipped noisy gradient descent algorithm based on convolution smoothing for quantile regression, and show that the algorithm provides privacy guarantees and desirable statistical precision. We derive finite-sample high-probability bounds for parameter estimation and regret analysis. Our bound aligns with that for strongly convex and smooth loss function. We apply the approach to the data-driven newsvendor problem with features and show that we attain a faster excess population risk bound compared to that obtained from an indiscriminate application of existing results for general nonsmooth convex loss. Our numerical experiments demonstrate that the proposed new method can achieve desirable privacy protection with a marginal increase in cost. (Joint work with Tuoyi Zhao and Wenxin Zhou).
                     </td>
                 </tr>
             </table>
@@ -766,6 +743,29 @@
                 </tr>
             </table>
             
+            <a id="arkajyoti_saha"></a>
+            <table>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="title">
+                        <a href="https://www.arkajyotisaha.com/">Arkajyoti Saha (UC Irvine)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker">
+                     Random Forests for Geospatial Data
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="abstract">
+                      Abstract: Due to recent advancements in geographical information systems, remote sensing technology, and affordable sensors, we are now faced with datasets that require us to consider spatial dependencies. These geospatial data are often analyzed using the linear mixed model framework, which includes a linear fixed covariate effect and a Gaussian Process (GP)-distributed spatial random effect. However, the assumption that covariate effects are linear is quite limiting. Non-linear modeling of spatial data is gaining popularity, and contemporary extensions of Random Forests (RF) for spatial data diverge from the mixed model setup, giving up inference on the fixed effects and other benefits of utilizing GP. By explicitly modeling the spatial random effects with a GP, we offer a unique and well-principled extension of RF for estimating nonlinear covariate effects in spatial mixed models. Our method extends RF in the same way generalized least square extends ordinary least squares to accommodate for dependence in linear models. For both estimation and prediction with spatial data, our method significantly outperforms classical RF in an extensive simulation study.
+                    </td>
+                </tr>
+            </table>
+            
     </p>
     
         <h2>Contributed Posters</h2><a id="posters"></a>
@@ -836,6 +836,52 @@
                     </td>
                     <td class="abstract">
                       Abstract: This work introduces a conformal inference method to evaluate uncertainty in classification by generating prediction sets with valid coverage conditional on adaptively chosen features. These features are carefully selected to reflect potential model limitations or biases. This can be useful to find a practical compromise between efficiency -- by providing informative predictions -- and algorithmic fairness -- by ensuring equalized coverage for the most sensitive groups. We demonstrate the validity and effectiveness of this method on simulated and real data sets.
+                    </td>
+                </tr>
+            </table>
+            
+            <a id="john_cherian"></a>
+            <table>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="title">
+                        <a href="https://jjcherian.github.io/">John Cherian (Stanford University)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker">
+                     Night-of election modeling via conformal inference
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="abstract">
+                      Abstract: We consider a high-stakes application of statistical inference: uncertainty quantification for election night modeling. The Washington Post observes vote counts from early-reporting jurisdictions, e.g., precincts on the East Coast of the United States, and fits a model to these results that predicts the final outcome in each contested race. Quantifying the error of this prediction is crucial; an overconfident prediction can mislead the public and harm the news provider’s reputation. Over the last four years, we have worked on methods to extend conformal prediction to this setting. Working with election data poses many challenges. For example, the data-generating distribution shifts over time, and spatiotemporal correlation can invalidate standard approaches. Variants of our model have been featured in The Washington Post’s coverage of the 2020 and 2022 national United States elections, and the model introduced in this poster was used by the paper in the 2024 presidential election. This is joint work with Lenny Bronner (The Washington Post) and Emmanuel Candès (Stanford).
+                    </td>
+                </tr>
+            </table>
+            
+            <a id="anav_sood"></a>
+            <table>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="title">
+                        <a href="https://profiles.stanford.edu/anav-sood">Anav Sood (Stanford University)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="speaker">
+                     Selective inference is easier with p-values
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date" rowspan="2">
+                    </td>
+                    <td class="abstract">
+                      Abstract: Selective inference is a subfield of statistics that enables valid inference after selection of a data-dependent question. In this paper, we introduce selectively dominant p-values, a class of p-values that allow practitioners to easily perform inference after arbitrary selection procedures. Unlike a traditional p-value, whose distribution must stochastically dominate the uniform distribution under the null, a selectively dominant p-value must have a post-selection distribution that stochastically dominates that of a uniform having undergone the same selection process; moreover, this property must hold simultaneously for all possible selection processes. Despite the strength of this condition, we show that all commonly used p-values (e.g., p-values from two-sided testing in parametric families, one-sided testing in monotone likelihood ratio and exponential families, F-tests for linear regression, and permutation tests) are selectively dominant. By recasting two canonical selective inference problems-inference on winners and rank verification-in our selective dominance framework, we provide simpler derivations, a deeper conceptual understanding, and new generalizations and variations of these methods. Additionally, we use our insights to introduce selective variants of methods that combine p-values, such as Fisher's combination test.
                     </td>
                 </tr>
             </table>
