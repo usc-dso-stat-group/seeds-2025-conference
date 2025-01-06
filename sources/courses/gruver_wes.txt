@@ -1,4 +1,4 @@
-Short Course - GenAI 1 (Thursday, January 8, 1pm-5pm) 	
+Short Course - GenAI 1 (Wednesday, January 8, 1pm-5pm) 	
 
 Generative AI Solution Development on Databricks
 
