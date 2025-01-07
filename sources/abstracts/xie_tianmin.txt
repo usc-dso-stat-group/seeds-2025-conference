@@ -1,3 +1,3 @@
-Conformal classification with unknown label spaces
+Conformal Classification with Unknown Label Spaces
 
-TBA
+We develop a conformal inference method for classifying labels when the label space is unknown, focusing on species sampling models and conformal p-values. This method constructs prediction sets for new data points when the label space $\mathcal{Y}$ is not fully known or observable in advance. For the hypothesis testing problem of whether a new label is a new species, we introduce a conformal Good-Turing p-value which efficiently tests whether a new observation belongs to a previously unseen species. Moreover, we leverage on features to improve the prediction of new labels. Additionally, the paper proves the optimality of the proposed conformal Good-Turing p-value within the framework of our model. Through numerical experiments, we show how our approach can be applied to complex data, providing a robust framework for predictive modeling in environments where traditional methods fall short. 
